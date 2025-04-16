@@ -21,15 +21,17 @@ app.post("/send", async (req, res) => {
 
   const notification = new apn.Notification();
 
-  // ✅ Essential for iOS display
+  // ✅ This is where the extension gets triggered
   notification.payload = {
     aps: {
       alert: message,
-      sound: "default"
+      sound: "default",
+      "mutable-content": 1 // ← Trigger your Notification Service Extension
     }
+    // 🔁 You can include custom keys here (like media-url)
   };
 
-  // 👇 Optional but safe for older fallback logic
+  // Optional fallback alert setup (legacy)
   notification.alert = message;
   notification.sound = "default";
 
