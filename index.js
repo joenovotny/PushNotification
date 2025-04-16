@@ -21,13 +21,17 @@ app.post("/send", async (req, res) => {
 
   const notification = new apn.Notification();
 
-  // Instead of relying on .alert and .sound alone, explicitly define aps payload:
+  // ✅ Essential for iOS display
   notification.payload = {
     aps: {
       alert: message,
       sound: "default"
     }
   };
+
+  // 👇 Optional but safe for older fallback logic
+  notification.alert = message;
+  notification.sound = "default";
 
   notification.pushType = "alert";
   notification.topic = topic || process.env.APNS_BUNDLE_ID;
