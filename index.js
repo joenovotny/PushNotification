@@ -11,7 +11,7 @@ const options = {
     keyId: process.env.APNS_KEY_ID,
     teamId: process.env.APNS_TEAM_ID,
   },
-  production: false, // Set to false for development, true for production
+  production: true, // Set to false for development, true for production
 };
 
 const apnProvider = new apn.Provider(options);
