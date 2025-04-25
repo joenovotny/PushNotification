@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Layout Fragments</title>
+</head>
+<body>
+
+	<div th:fragment="header">
+	    <div style="text-align:center; padding: 20px;">
+	        <img src="/images/GCU_LOGO.jpg" alt="GCU Logo" height="100" />
+	        <h1>Welcome to CST-339 Spring Boot Activity Application</h1>
+	        
+	        <!-- ✅ Navigation menu -->
+	        <nav style="margin-top: 15px;">
+	            <a th:href="@{/login/}" style="margin-right: 15px;">Login Page</a>
+	            <a th:href="@{/orders/}">Orders Page</a>
+	        </nav>
+	    </div>
+	</div>
+
+	<div th:fragment="footer">
+	    <div style="text-align:center; padding-top: 20px;">
+	        <h5>&copy; 2025 Grand Canyon University</h5>
+	    </div>
+	</div>
+
+</body>
+</html>

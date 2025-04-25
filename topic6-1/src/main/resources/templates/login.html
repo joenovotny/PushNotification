@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+</head>
+<body>
+
+<!-- Clean Header -->
+<div th:replace="layouts/common :: header"></div>
+
+<section>
+    <form th:action="@{/login/doLogin}" th:object="${loginModel}" method="post">
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" th:field="*{username}" /></td>
+                <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color:red;"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" th:field="*{password}" /></td>
+                <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color:red;"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Login</button></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div th:if="${#fields.hasErrors('*')}" style="color:red;">
+                        <p><strong>List of Errors</strong></p>
+                        <ul>
+                            <li th:each="err : ${#fields.errors('username')}" th:text="${err}"></li>
+                            <li th:each="err : ${#fields.errors('password')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</section>
+
+<!-- Clean Footer -->
+<div th:replace="layouts/common :: footer"></div>
+
+</body>
+</html>
